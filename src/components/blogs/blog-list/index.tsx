@@ -1,16 +1,15 @@
 "use client";
 
-import { Blog } from "@/utils/types";
-import SingleBlog from "../single-blog";
-import { useContext, useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import Featured from "@/components/blogs/Featured-post";
-import { categories } from "@/utils";
-import { GlobalContext } from "@/context";
 import Button from "@/components/button";
 import { useToast } from "@/components/ui/use-toast";
-import { ToastAction } from "@/components/ui/toast";
+import { GlobalContext } from "@/context";
+import { categories } from "@/utils";
+import { Blog } from "@/utils/types";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useContext, useEffect, useState } from "react";
+import SingleBlog from "../single-blog";
+import { Search } from "lucide-react";
 
 export default function BlogList({ lists }: { lists: Blog[] }) {
   const router = useRouter();
@@ -63,11 +62,12 @@ export default function BlogList({ lists }: { lists: Blog[] }) {
         setSearchResults([]);
         <h1>Please Make it.</h1>;
         toast({
+          className: "border-none shadow-2xl",
           title: "Ohh, Sorry This Blog doesn't exist",
           description: "Please Make this",
           action: (
             <Link
-              className="rounded-full border-black py-2 px-[0.5rem] text-black dark:text-white shadow-md shadow-primary/40 hover:shadow-primary/30 hover:shadow-xl transition duration-1000 ease-in-out font-normal text-base"
+              className="rounded-full border-black py-2 px-[0.5rem] text-black dark:text-white shadow-md hover:shadow-xl transition duration-1000 ease-in-out font-normal text-base"
               href="/create"
             >
               Create Blog
@@ -83,24 +83,23 @@ export default function BlogList({ lists }: { lists: Blog[] }) {
   return (
     <section className="pt-[120px]">
       <div className="container">
-        <div className="flex justify-center mb-12 py-14 rounded-3xl text-[2.000rem] leading-10 font-bold text-white w-full h-fit bg-[#7d41e1]">
-          Blogs
-        </div>
-
-        <div className="flex gap-4">
-          <input
-            name="search"
-            id="search"
-            type="text"
-            placeholder="Search Blogs"
-            autoFocus
-            autoComplete="off"
-            className="w-full rounded-md border border-transparent py-3 px-6 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primarycus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
-            value={searchQuery}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setSearchQuery(e.target.value)
-            }
-          />
+        <div className="flex flex-col items-center justify-center mb-12 py-10 rounded-3xl font-bold text-white w-full h-fit bg-[#7d41e1]">
+          <div className="relative top-5 text-4xl">Blogs</div>
+          <div className=" flex items-center gap-4 relative top-16">
+            <input
+              name="search"
+              id="search"
+              type="text"
+              placeholder="Search Blogs"
+              autoComplete="off"
+              className="rounded-xl justify-center shadow-3xl py-3 px-6 text-lg text-body-color placeholder-body-color font-semibold shadow-2xl outline-none focus:shadow-primary/40 transition-all duration-100 dark:bg-[#242B51] dark:shadow-signUp"
+              value={searchQuery}
+              style={{ width: "460px", height: "70px" }}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setSearchQuery(e.target.value)
+              }
+            />
+          </div>
         </div>
         <div>
           <Button text="Search" onClick={handleSearch} />
