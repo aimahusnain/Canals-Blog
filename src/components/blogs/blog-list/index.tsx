@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 import SingleBlog from "../single-blog";
 import { Search } from "lucide-react";
+import { FiSearch } from "react-icons/fi";
 
 export default function BlogList({ lists }: { lists: Blog[] }) {
   const router = useRouter();
@@ -86,15 +87,18 @@ export default function BlogList({ lists }: { lists: Blog[] }) {
         <div className="flex flex-col items-center justify-center mb-12 py-10 rounded-3xl font-bold text-white w-full h-fit bg-[#7d41e1]">
           <div className="relative top-5 text-4xl">Blogs</div>
           <div className=" flex items-center gap-4 relative top-16">
+            {/* <Search className="text-black relative left-14" /> */}
+            <FiSearch className="text-black text-xl relative left-14" />
+
             <input
               name="search"
               id="search"
               type="text"
               placeholder="Search Blogs"
               autoComplete="off"
-              className="rounded-xl justify-center shadow-3xl py-3 px-6 text-lg text-body-color placeholder-body-color font-semibold shadow-2xl outline-none focus:shadow-primary/40 transition-all duration-100 dark:bg-[#242B51] dark:shadow-signUp"
+              className="rounded-xl justify-center shadow-3xl py-3 pl-14 px-6 text-lg text-body-color placeholder-body-color font-semibold shadow-2xl outline-none focus:shadow-[#7d41e1]/40 transition-all duration-100 dark:bg-[#242B51] dark:shadow-signUp"
               value={searchQuery}
-              style={{ width: "460px", height: "70px" }}
+              style={{ width: "550px", height: "70px" }}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setSearchQuery(e.target.value)
               }
