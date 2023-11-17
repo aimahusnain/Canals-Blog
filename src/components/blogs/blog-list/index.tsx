@@ -19,13 +19,24 @@ export default function BlogList({ lists }: { lists: Blog[] }) {
   const [activeButton, setActiveButton] = useState("All");
 
   useEffect(() => {
-    router.refresh();
+    // router.refresh();
+    helperFuncToFetchSearchResults(searchQuery);
+
   }, []);
 
   const handleButtonClick = (catItem: any) => {
     setActiveButton(catItem.label);
     router.push(`/blogs/category/${catItem.value}`);
   };
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const query = e.target.value;
+    setSearchQuery(query);
+
+    // Trigger search when the query changes
+    helperFuncToFetchSearchResults(query);
+  };
+
 
   async function handleDelete(id: number) {
     console.log(id);
@@ -99,15 +110,16 @@ export default function BlogList({ lists }: { lists: Blog[] }) {
               className="rounded-xl justify-center shadow-3xl py-3 pl-14 px-6 text-lg text-body-color placeholder-body-color font-semibold shadow-2xl outline-none focus:shadow-[#7d41e1]/40 transition-all duration-100 dark:bg-[#242B51] dark:shadow-signUp"
               value={searchQuery}
               style={{ width: "550px", height: "70px" }}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                setSearchQuery(e.target.value)
-              }
+              // onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              //   setSearchQuery(e.target.value)
+              // }
+              onChange={handleSearchChange}
             />
           </div>
         </div>
-        <div>
+        {/* <div>
           <Button text="Search" onClick={handleSearch} />
-        </div>
+        </div> */}
 
         <div className="flex flex-wrap justify-center items-center px-8">
           <button
