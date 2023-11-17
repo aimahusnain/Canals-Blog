@@ -8,6 +8,7 @@ export interface MenuItem {
 export interface Option {
     label : string;
     value : string;
+    
 }
 
 export interface FormControlItem{
