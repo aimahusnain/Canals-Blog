@@ -1,17 +1,14 @@
 "use client";
 
-import { Blog } from "@/utils/types";
-import SingleBlog from "../single-blog";
-import { useContext, useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import Featured from "@/components/blogs/Featured-post";
-import { categories } from "@/utils";
-import { GlobalContext } from "@/context";
-import Button from "@/components/button";
 import { useToast } from "@/components/ui/use-toast";
-import { ToastAction } from "@/components/ui/toast";
+import { GlobalContext } from "@/context";
+import { categories } from "@/utils";
+import { Blog } from "@/utils/types";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useContext, useEffect, useState } from "react";
 import { FiSearch } from "react-icons/fi";
+import SingleBlog from "../single-blog";
 
 export default function BlogList({ lists }: { lists: Blog[] }) {
   const router = useRouter();
@@ -22,14 +19,14 @@ export default function BlogList({ lists }: { lists: Blog[] }) {
   useEffect(() => {
     router.refresh();
   }, []);
-  
+
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const query = e.target.value;
-        setSearchQuery(query);
-    
-        // Trigger search when the query changes
-        helperFuncToFetchSearchResults(query);
-      };
+    const query = e.target.value;
+    setSearchQuery(query);
+
+    // Trigger search when the query changes
+    helperFuncToFetchSearchResults(query);
+  };
 
   const handleButtonClick = (catItem: any) => {
     setActiveButton(catItem.label);
@@ -51,10 +48,6 @@ export default function BlogList({ lists }: { lists: Blog[] }) {
 
   const { searchResults, setSearchQuery, setSearchResults, searchQuery } =
     useContext(GlobalContext);
-
-  async function handleSearch() {
-    helperFuncToFetchSearchResults(searchQuery);
-  }
 
   async function helperFuncToFetchSearchResults(query: string) {
     const res = await fetch(`/api/search?query=${query}`, {
@@ -92,31 +85,28 @@ export default function BlogList({ lists }: { lists: Blog[] }) {
   return (
     <section className="pt-[120px]">
       <div className="container">
-      <div className="flex flex-col items-center justify-center mb-12 py-10 rounded-3xl font-bold text-white w-full h-fit bg-[#7d41e1]">
-           <div className="relative top-5 text-4xl">Blogs</div>
-           <div className=" flex items-center gap-4 relative top-16">
-             {/* <Search className="text-black relative left-14" /> */}
-             <FiSearch className="text-black text-xl relative left-14" />
+        <div className="flex flex-col items-center justify-center mb-12 py-10 rounded-3xl font-bold text-white w-full h-fit bg-[#7d41e1]">
+          <div className="relative top-5 text-4xl">Blogs</div>
+          <div className=" flex items-center gap-4 relative top-16">
+            {/* <Search className="text-black relative left-14" /> */}
+            <FiSearch className="text-black text-xl relative left-14" />
 
-             <input
-               name="search"
-               id="search"
-               type="text"
-               placeholder="Search Blogs"
-               autoComplete="off"
-               className="rounded-xl justify-center shadow-3xl py-3 pl-14 px-6 text-lg text-body-color placeholder-body-color font-semibold shadow-2xl outline-none focus:shadow-[#7d41e1]/40 transition-all duration-100 dark:bg-[#242B51] dark:shadow-signUp"
-               value={searchQuery}
-               style={{ width: "550px", height: "70px" }}
-               // onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-               //   setSearchQuery(e.target.value)
-               // }
-               onChange={handleSearchChange}
-             />
-           </div>
-         </div>
-        {/* <div>
-          <Button text="Search" onClick={handleSearch} />
-        </div> */}
+            <input
+              name="search"
+              id="search"
+              type="text"
+              placeholder="Search Blogs"
+              autoComplete="off"
+              className="rounded-xl justify-center shadow-3xl py-3 pl-14 px-6 text-lg text-body-color placeholder-body-color font-semibold shadow-2xl outline-none focus:shadow-[#7d41e1]/40 transition-all duration-100 dark:bg-[#242B51] dark:shadow-signUp"
+              value={searchQuery}
+              style={{ width: "550px", height: "70px" }}
+              // onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              //   setSearchQuery(e.target.value)
+              // }
+              onChange={handleSearchChange}
+            />
+          </div>
+        </div>
 
         <div className="flex flex-wrap justify-center items-center px-8">
           <button
