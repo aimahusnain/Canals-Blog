@@ -7,7 +7,7 @@ export async function PUT(request: NextRequest) {
 
     const updatedBlogPost = await prisma.post.update({
       where: {
-        id: String(extractData.id),
+        id: Number(extractData.id),
       },
       data: {
         comments: extractData.comments,
@@ -22,15 +22,15 @@ export async function PUT(request: NextRequest) {
     } else {
       return NextResponse.json({
         success: false,
-        message: "Failed to update the post! Please try again",
+        message: "failed to update the post ! Please try again",
       });
     }
   } catch (e) {
-    console.error(e);
+    console.log(e);
 
     return NextResponse.json({
       success: false,
-      message: "Something went wrong! Please try again",
+      message: "Something went wrong ! Please try again",
     });
   }
 }

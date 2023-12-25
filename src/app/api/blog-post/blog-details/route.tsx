@@ -8,7 +8,7 @@ export async function GET(req: NextRequest) {
 
     const blogDetails = await prisma.post.findUnique({
       where: {
-        id: String(blogID),
+        id: Number(blogID),
       },
     });
 
@@ -20,7 +20,7 @@ export async function GET(req: NextRequest) {
     } else {
       return NextResponse.json({
         success: false,
-        message: "Failed to fetch the blog details! Please try again",
+        message: "Failed to fetch the blog details ! Please try again",
       });
     }
   } catch (e) {
@@ -28,7 +28,7 @@ export async function GET(req: NextRequest) {
 
     return NextResponse.json({
       success: false,
-      message: "Something went wrong! Please try again",
+      message: "Something went wrong ! Please try again",
     });
   }
 }

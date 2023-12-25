@@ -20,7 +20,7 @@ import lottie from "lottie-web";
 const app = initializeApp(firebaseConfig);
 const stroage = getStorage(
   app,
-  "gs://nextjs-blog2-15b36.appspot.com"
+  "gs://mod-apk-guide.appspot.com"
 );
 
 function createUniqueFileName(fileName: string) {
