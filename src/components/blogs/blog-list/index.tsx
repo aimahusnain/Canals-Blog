@@ -22,7 +22,7 @@ export default function BlogList({ lists }: { lists: Blog[] }) {
   }, []);
     
   async function extractAllBlogs() {
-    const res = await fetch(`${process.env.URL}/api/blog-post/get-all-post`, {
+    const res = await fetch(`/api/blog-post/get-all-post`, {
       method: "GET",
       cache: "no-store",
     });

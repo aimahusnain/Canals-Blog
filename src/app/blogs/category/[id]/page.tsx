@@ -2,7 +2,7 @@ import BlogList from "@/components/blogs/blog-list";
 import CategoryList from "@/components/category";
 
 async function extractAllBlogs() {
-  const res = await fetch(`${process.env.URL}/api/blog-post/get-all-post`, {
+  const res = await fetch(`/api/blog-post/get-all-post`, {
     method: "GET",
     cache: "no-store",
   });
@@ -13,7 +13,7 @@ async function extractAllBlogs() {
 }
 
 async function getAllListsByCategory(getId: string) {
-  const res = await fetch(`${process.env.URL}/api/category?categoryID=${getId}`, {
+  const res = await fetch(`/api/category?categoryID=${getId}`, {
     method: "GET",
     cache: "no-store",
   });
