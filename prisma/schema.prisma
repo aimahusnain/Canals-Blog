@@ -10,7 +10,7 @@ datasource db {
 }
 
 model Post {
-    id          String @id @map("_id")
+  id          String   @id
   title       String
   description String
   image       String
@@ -18,5 +18,5 @@ model Post {
   userid      String
   userimage   String
   comments    String[]
-  isFeatured  Boolean   @default(false)
+  isFeatured  Boolean  @default(false)
 }
