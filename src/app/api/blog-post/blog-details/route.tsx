@@ -8,7 +8,7 @@ export async function GET(req: NextRequest) {
 
     const blogDetails = await prisma.post.findUnique({
       where: {
-        id: String(blogID),
+        id: String(blogID), // Convert blogID to a string
       },
     });
 

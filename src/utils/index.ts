@@ -94,13 +94,13 @@ export const formControls: FormControlItem[] = [
 ];
 
 export const firebaseConfig = {
-  apiKey: "AIzaSyDDJv2zB5axUp3S68l-UP8iNPgxptWPjKA",
-  authDomain: "nextjs-blog2-15b36.firebaseapp.com",
-  projectId: "nextjs-blog2-15b36",
-  storageBucket: "nextjs-blog2-15b36.appspot.com",
-  messagingSenderId: "710920803738",
-  appId: "1:710920803738:web:cec26c66148ed7107c9623",
-  measurementId: "G-1FVG2ZF3K7",
+  apiKey: "AIzaSyDHTraQiZ00g2_qj318JZRKVSShrJyH_YM",
+  authDomain: "apk-guide-ab55b.firebaseapp.com",
+  projectId: "apk-guide-ab55b",
+  storageBucket: "apk-guide-ab55b.appspot.com",
+  messagingSenderId: "646627246506",
+  appId: "1:646627246506:web:1d2be942ffb5658c39abd3",
+  measurementId: "G-GM6STWC26B"
 };
 
 export const initialBlogFormData = {
