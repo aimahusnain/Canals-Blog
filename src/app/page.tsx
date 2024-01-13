@@ -2,7 +2,7 @@ import FeaturedPost from "@/components/blogs/Featured-post";
 
 async function extractAllBlogs() {
   try {
-    const res = await fetch(`/api/blog-post/get-all-post`, {
+    const res = await fetch(`${process.env.URL}/api/blog-post/get-all-post`, {
       method: "GET",
       cache: "no-store",
     });

@@ -20,7 +20,7 @@ export default function BlogDetailsHome({ blogData }: { blogData: Blog }) {
 
     extractComments.push(`${comment}|${session?.user?.name}`);
 
-    const response = await fetch(`/api/blog-post/update-post`, {
+    const response = await fetch(`${process.env.URL}/api/blog-post/update-post`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

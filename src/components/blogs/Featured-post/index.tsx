@@ -15,7 +15,7 @@ export default function Featured({ lists }: { lists: Blog[] }) {
     async function handleDelete(id:number) {
       console.log(id);
       
-      const res = await fetch(`/api/blog-post/delete-post?id=${id}`, {
+      const res = await fetch(`${process.env.URL}/api/blog-post/delete-post?id=${id}`, {
         method: "DELETE",
         cache: "no-store",
       });

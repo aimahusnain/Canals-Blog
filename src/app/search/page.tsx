@@ -12,7 +12,7 @@ export default function Search() {
   const router = useRouter();
 
   async function helperFuncToFetchSearchResults(query: string) {
-    const res = await fetch(`/api/search?query=${query}`, {
+    const res = await fetch(`${process.env.URL}/api/search?query=${query}`, {
       method: "GET",
       cache: "no-store",
     });
@@ -33,7 +33,7 @@ export default function Search() {
   async function handleDelete(id: number) {
     console.log(id);
 
-    const res = await fetch(`/api/blog-post/delete-post?id=${id}`, {
+    const res = await fetch(`${process.env.URL}/api/blog-post/delete-post?id=${id}`, {
       method: "DELETE",
       cache: "no-store",
     });
