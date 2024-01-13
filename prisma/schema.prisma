@@ -11,6 +11,10 @@ datasource db {
 
 model Post {
     id          String @id @map("_id")
+  title       String
+  description String
+  image       String
+  category    String
   userid      String
   userimage   String
   comments    String[]
