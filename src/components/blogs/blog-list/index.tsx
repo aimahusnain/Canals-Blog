@@ -1,4 +1,4 @@
-"use client";
+'use client'
 
 import { useToast } from "@/components/ui/use-toast";
 import { GlobalContext } from "@/context";
@@ -9,16 +9,28 @@ import { useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 import { FiSearch } from "react-icons/fi";
 import SingleBlog from "../single-blog";
+import FeaturedPostEffected from './Featured Post'
 
 export default function BlogList({ lists }: { lists: Blog[] }) {
   const router = useRouter();
   const { toast } = useToast();
-
   const [activeButton, setActiveButton] = useState("All");
+
 
   useEffect(() => {
     router.refresh();
   }, []);
+    
+  async function extractAllBlogs() {
+    const res = await fetch(`${process.env.URL}/api/blog-post/get-all-post`, {
+      method: "GET",
+      cache: "no-store",
+    });
+  
+    const data = await res.json();
+  
+    if (data.success) return data.data;
+  }
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const query = e.target.value;
@@ -50,6 +62,7 @@ export default function BlogList({ lists }: { lists: Blog[] }) {
     useContext(GlobalContext);
 
   async function helperFuncToFetchSearchResults(query: string) {
+    
     const res = await fetch(`/api/search?query=${query}`, {
       method: "GET",
       cache: "no-store",
@@ -89,7 +102,7 @@ export default function BlogList({ lists }: { lists: Blog[] }) {
           <div className="relative top-5 text-4xl">Blogs</div>
           <div className=" flex items-center gap-4 relative top-16">
             {/* <Search className="text-black relative left-14" /> */}
-            <FiSearch className="text-black text-xl relative left-14" />
+            <FiSearch className="text-black dark:text-white text-xl relative left-14" />
 
             <input
               name="search"
@@ -97,7 +110,7 @@ export default function BlogList({ lists }: { lists: Blog[] }) {
               type="text"
               placeholder="Search Blogs"
               autoComplete="off"
-              className="rounded-xl justify-center shadow-3xl py-3 pl-14 px-6 text-lg text-body-color placeholder-body-color font-semibold shadow-2xl outline-none focus:shadow-[#7d41e1]/40 transition-all duration-100 dark:bg-[#242B51] dark:shadow-signUp"
+              className="rounded-xl justify-center shadow-3xl py-3 pl-14 px-6 text-lg text-body-color placeholder-body-color font-semibold shadow-2xl shadow-black/40 outline-none focus:shadow-[#7d41e1]/40 transition-all duration-100 dark:bg-[#242B51] dark:shadow-signUp"
               value={searchQuery}
               style={{ width: "550px", height: "70px" }}
               // onChange={(e: React.ChangeEvent<HTMLInputElement>) =>

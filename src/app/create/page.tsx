@@ -20,7 +20,7 @@ import lottie from "lottie-web";
 const app = initializeApp(firebaseConfig);
 const stroage = getStorage(
   app,
-  "gs://nextjs-blog2-15b36.appspot.com"
+  "gs://apk-guide-ab55b.appspot.com"
 );
 
 function createUniqueFileName(fileName: string) {
@@ -92,7 +92,7 @@ export default function Create() {
   async function handleSaveBlogPost() {
     console.log(formData);
 
-    const res = await fetch("/api/blog-post/add-post", {
+      const res = await fetch(`http://localhost:3000/api/blog-post/add-post`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -210,6 +210,8 @@ export default function Create() {
                             </option>
                             {control.options.map((optionItem) => (
                               <option
+                              key={optionItem.value}  // Add unique key prop here
+
                                 id={optionItem.value}
                                 value={optionItem.value}
                               >

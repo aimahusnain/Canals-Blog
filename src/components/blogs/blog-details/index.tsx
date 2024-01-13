@@ -20,7 +20,7 @@ export default function BlogDetailsHome({ blogData }: { blogData: Blog }) {
 
     extractComments.push(`${comment}|${session?.user?.name}`);
 
-    const response = await fetch(`/api/blog-post/update-post`, {
+    const response = await fetch(`${process.env.URL}/api/blog-post/update-post`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -133,8 +133,8 @@ export default function BlogDetailsHome({ blogData }: { blogData: Blog }) {
                 </h2>
               </div>
               {blogData && blogData.comments && blogData.comments.length > 0
-                ? blogData.comments.map((comment) => (
-                    <div className="p-6 text-base rounded-lg dark:bg-gray-900">
+                ? blogData.comments.map((comment, index) => (
+                    <div key={index} className="p-6 text-base rounded-lg dark:bg-gray-900">
                       <div className="flex justify-between items-center mb-2">
                         <div className="flex items-center">
                           <p className="inline-flex items-center mr-3 text-sm text-black dark:text-white font-semibold">

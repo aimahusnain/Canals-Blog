@@ -11,7 +11,7 @@ async function extractAllBlogs() {
   if (data.success) return data.data;
 }
 
-export default async function Home() {
+export default async function Blogs() {
   const blogPostsList = await extractAllBlogs();
 
   const featuredPost = blogPostsList.find((post: any) => post.isFeatured);
