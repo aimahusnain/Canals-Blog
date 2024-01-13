@@ -5,16 +5,12 @@ generator client {
 }
 
 datasource db {
-  provider = "mongodb"
+  provider = "cockroachdb"
   url      = env("DATABASE_URL")
 }
 
 model Post {
-    id          String @id @default(auto()) @map("_id") @db.ObjectId
-  title       String
-  description String
-  image       String
-  category    String
+    id          String @id @map("_id")
   userid      String
   userimage   String
   comments    String[]
