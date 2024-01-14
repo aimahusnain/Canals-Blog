@@ -22,7 +22,7 @@ export default function BlogList({ lists }: { lists: Blog[] }) {
   }, []);
     
   async function extractAllBlogs() {
-    const res = await fetch(`${process.env.URL}/api/blog-post/get-all-post`, {
+    const res = await fetch(`/api/blog-post/get-all-post`, {
       method: "GET",
       cache: "no-store",
     });
@@ -48,7 +48,7 @@ export default function BlogList({ lists }: { lists: Blog[] }) {
   async function handleDelete(id: number) {
     console.log(id);
 
-    const res = await fetch(`${process.env.URL}/api/blog-post/delete-post?id=${id}`, {
+    const res = await fetch(`/api/blog-post/delete-post?id=${id}`, {
       method: "DELETE",
       cache: "no-store",
     });
@@ -63,7 +63,7 @@ export default function BlogList({ lists }: { lists: Blog[] }) {
 
   async function helperFuncToFetchSearchResults(query: string) {
     
-    const res = await fetch(`${process.env.URL}/api/search?query=${query}`, {
+    const res = await fetch(`/api/search?query=${query}`, {
       method: "GET",
       cache: "no-store",
     });
