@@ -10,7 +10,7 @@ datasource db {
 }
 
 model Post {
-  id          String   @id
+  id          Int   @id
   title       String
   description String
   image       String

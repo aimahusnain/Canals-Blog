@@ -12,8 +12,8 @@ export async function GET(req: NextRequest) {
         OR: [
           {
             title: extractQuery ? {
-              contains: extractQuery, // Use contains directly without mode or value
-              mode: "insensitive", // Add mode for case-insensitive search
+              contains: extractQuery,
+              mode: "insensitive",
             } : undefined,
           },
         ],

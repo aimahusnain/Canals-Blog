@@ -7,7 +7,7 @@ export async function PUT(request: NextRequest) {
 
     const updatedBlogPost = await prisma.post.update({
       where: {
-        id: String(extractData.id),
+        id: Number(extractData.id),
       },
       data: {
         comments: extractData.comments,

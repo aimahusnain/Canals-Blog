@@ -8,7 +8,7 @@ export async function DELETE(req: NextRequest) {
 
     const deletedBlogPost = await prisma.post.delete({
       where: {
-        id: String(extractIdOfBlogItemToBeDeleted),
+        id: Number(extractIdOfBlogItemToBeDeleted),
       },
     });
 
